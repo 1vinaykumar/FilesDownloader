@@ -41,7 +41,7 @@ def check():
 
     try:
 
-        a=Request(inp_url, headers={'User-Agent': res_in.get()})
+        a=Request(inp_url, headers={'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"})
 
     except:
         
@@ -62,7 +62,7 @@ def check():
             
             d="size not available"
 
-        Label(frame,text=str(d), width=15,bg="#c0dfd9").place(x=150,y=110)
+        Label(frame,text=str(d),width=15,bg="#c0dfd9").place(relx=0.5,y=160,anchor=CENTER)
 
         inp_fn=file_in.get().strip()
 
@@ -121,8 +121,6 @@ def dwn():
 
             perc=int((c_s/d)*100)
 
-            #txtdis="Downloading...."+str(c_s)+"MB  "+str(perc)+"%"
-
             ttk.Progressbar(frame,orient="horizontal",maximum=100,length=300,mode="determinate",value=perc).place(relx=0.5,y=350,anchor=CENTER)
 
 
@@ -132,8 +130,6 @@ url_in=StringVar()
 
 file_in=StringVar()
 
-res_in=StringVar()
-
 Label(frame,text="URL", width=15,bg="#c0dfd9").place(x=10,y=50)
 
 ent1=Entry(frame,textvariable=url_in,width=48)
@@ -142,27 +138,14 @@ ent1.focus()
 
 ent1.place(x=150,y=50)
 
-Label(frame,text="User Agent", width=15,bg="#c0dfd9").place(x=10,y=170)
-
-rad=Radiobutton(frame,text="Windows",variable=res_in,value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36",width=10,bg="#c0dfd9")
-
-rad.select()
-
-rad.place(x=150,y=170)
-
-Radiobutton(frame,text="Android",variable=res_in,value="Mozilla/5.0 (Linux; Android 7.0; SM-G930V Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36",width=10,bg="#c0dfd9").place(x=280,y=170)
-
-Radiobutton(frame,text="IOS",variable=res_in,value="Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",width=10,bg="#c0dfd9").place(x=410,y=170)
-
 Label(frame,text="File Name", width=15,bg="#c0dfd9").place(x=10,y=230)
 
 Entry(frame,textvariable=file_in,width=50).place(x=150,y=230)
 
-Label(frame,text="File Size", width=15,bg="#c0dfd9").place(x=10,y=110)
+Label(frame,text="File Size", width=15,bg="#c0dfd9").place(relx=0.5,y=110,anchor=CENTER)
 
 Button(frame,text="Check",width=10,bg="#b3c2bf",command=check).place(x=460,y=48)
 
-
-Button(frame,text="Exit",width=25,bg="#b3c2bf",command=window.destroy).place(x=50,y=300)
+Button(frame,text="Exit",width=40,bg="#b3c2bf",command=window.destroy).place(relx=0.5,rely=0.9,anchor=S)
 
 window.mainloop()
